@@ -44,7 +44,7 @@
         "authors": [
             "medjai <medjai@inbox.ru>"
         ],
-        "keywords": [
+		"keywords": [
             "Ballu boiler"
         ],
         "license": "MIT",
@@ -65,10 +65,89 @@
             }
         ]
     },
-    "native": {
-        "option1": true,
-        "option2": "42"
+	"native": {
+    "host": "127.0.0.1",
+    "port": 23
+  },
+   "objects": [],
+	"instanceObjects": [
+  {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "role": "indicator.connected",
+        "name": "if connected to Ballu",
+        "type": "boolean",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
     },
-    "objects": [],
-    "instanceObjects": []
+   {
+      "_id": "temp",
+      "type": "state",
+      "common": {
+        "role": "value.temperature",
+        "name": "current temperature",
+        "desc": "current temperature",
+        "type": "number",
+        "unit": "°C",
+        "read": true,
+        "write": false,
+        "def": 0
+      },
+      "native": {}
+    },
+    {
+      "_id": "settemp",
+      "type": "state",
+      "common": {
+        "role": "level.temperature",
+        "name": "set temperature",
+        "desc": "set temperature",
+        "type": "number",
+        "unit": "°C",
+        "min": 35,
+        "max": 75,
+        "read": true,
+        "write": true,
+        "def": 18
+      },
+      "native": {}
+    },
+	{
+      "_id": "mode",
+      "type": "state",
+      "common": {
+        "role": "switch.mode.mode",
+        "name": "mode",
+        "desc": "mode",
+        "type": "string",
+        "read": true,
+        "write": true,
+        "def": "Off",
+        "states": {
+          "low": "Low",
+          "high": "High",
+          "off": "Off"
+        }
+      },
+      "native": {}
+    },
+  {
+      "_id": "raw",
+      "type": "state",
+      "common": {
+        "role": "state",
+        "name": "RAW code",
+        "desc": "RAW code",
+        "type": "string",
+        "read": true,
+        "write": true,
+        "def": false
+      },
+      "native": {}
+    }
+  ]
 }
