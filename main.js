@@ -89,11 +89,11 @@ function sendCmd(cmd, val){
 function connect(cb){
     let host = adapter.config.host ? adapter.config.host :'127.0.0.1';
     let port = adapter.config.port ? adapter.config.port :23;
-    adapter.log.debug('Haier ' + 'connect to: ' + host + ':' + port);
-    haier = net.connect(port, host, function (){
+    adapter.log.debug('balluboiler ' + 'connect to: ' + host + ':' + port);
+    balluboiler = net.connect(port, host, function (){
         clearTimeout(recnt);
         adapter.setState('info.connection', true, true);
-        adapter.log.info('Haier connected to: ' + host + ':' + port);
+        adapter.log.info('balluboiler connected to: ' + host + ':' + port);
         _connect = true;
         clearInterval(query);
         query = setInterval(function (){
@@ -103,8 +103,8 @@ function connect(cb){
         }, polling_time);
         cb && cb();
     });
-    haier.on('data', function (chunk){
-        adapter.log.debug("Haier raw response: {" + chunk.toString('hex') + '} Length packet:[' + chunk.length + ']');
+    balluboiler.on('data', function (chunk){
+        adapter.log.debug("balluboiler raw response: {" + chunk.toString('hex') + '} Length packet:[' + chunk.length + ']');
         if (chunk.length === 33 || chunk.length === 34){
             let a;
             chunk[0] = 0;
@@ -119,28 +119,28 @@ function connect(cb){
         if (chunk.length === 37){
             in_msg = Buffer.from(chunk);
             in_msg = in_msg.slice(2, 36);
-            adapter.log.debug("Haier incomming: " + in_msg.toString('hex'));
+            adapter.log.debug("balluboiler incomming: " + in_msg.toString('hex'));
             parse(in_msg);
         } else if (chunk.length === 36){
             in_msg = Buffer.from(chunk);
             in_msg = in_msg.slice(1, 35);
-            adapter.log.debug("Haier incomming: " + in_msg.toString('hex'));
+            adapter.log.debug("balluboiler incomming: " + in_msg.toString('hex'));
             parse(in_msg);
         } else if (chunk.length === 35){
             in_msg = Buffer.from(chunk);
             in_msg = in_msg.slice(0, 34);
-            adapter.log.debug("Haier incomming: " + in_msg.toString('hex'));
+            adapter.log.debug("balluboiler incomming: " + in_msg.toString('hex'));
             parse(in_msg);
         } else {
             adapter.log.error("Error length packet. Raw response: {" + chunk.toString('hex') + '} Length packet:[' + chunk.length + ']');
         }
     });
-    haier.on('error', function (e){
+    balluboiler.on('error', function (e){
         err(e);
     });
-    haier.on('close', function (e){
+    balluboiler.on('close', function (e){
         if (_connect){
-            err('Haier disconnected');
+            err('balluboiler disconnected');
         }
         reconnect();
     });
@@ -157,7 +157,7 @@ function send(cmd){
         }
         cmd = packet(cmd);
         adapter.log.debug('Send Command: ' + cmd.toString("hex"));
-        haier.write(cmd);
+        balluboiler.write(cmd);
         tabu = false;
     }
 }
@@ -269,7 +269,7 @@ function reconnect(){
     adapter.setState('info.connection', false, true);
     query && clearInterval(query);
     recnt && clearTimeout(recnt);
-    haier.destroy();
+    balluboiler.destroy();
     old_states = {};
     _connect = false;
     adapter.log.info('Reconnect after 60 sec...');
@@ -279,9 +279,9 @@ function reconnect(){
 }
 
 function err(e){
-    adapter.log.error("Haier " + e);
+    adapter.log.error("balluboiler " + e);
     if (e.code === "ENOTFOUND" || e.code === "ECONNREFUSED" || e.code === "ETIMEDOUT"){
-        haier.destroy();
+        balluboiler.destroy();
     }
 }
 
