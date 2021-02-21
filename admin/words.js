@@ -1,41 +1,52 @@
 /*global systemDictionary:true */
 'use strict';
-
 systemDictionary = {
-    'balluboiler adapter settings': {
-        'en': 'Adapter settings for balluboiler',
-        'de': 'Adaptereinstellungen für balluboiler',
-        'ru': 'Настройки адаптера для balluboiler',
-        'pt': 'Configurações do adaptador para balluboiler',
-        'nl': 'Adapterinstellingen voor balluboiler',
-        'fr': "Paramètres d'adaptateur pour balluboiler",
-        'it': "Impostazioni dell'adattatore per balluboiler",
-        'es': 'Ajustes del adaptador para balluboiler',
-        'pl': 'Ustawienia adaptera dla balluboiler',
-        'zh-cn': 'balluboiler的适配器设置'
+    'BalluBoiler adapter settings':      {
+        'en':    'BalluBoiler adapter settings',
+        'de':    'BalluBoiler adapter settings',
+        'ru':    'Настройки драйвера BalluBoiler',
+        'pt':    'BalluBoiler adapter settings',
+        'nl':    'BalluBoiler adapter settings',
+        'fr':    "BalluBoiler adapter settings",
+        'it':    "BalluBoiler adapter settings",
+        'es':    'BalluBoiler adapter settings',
+        'pl':    'BalluBoiler adapter settings',
+        'zh-cn': 'BalluBoiler adapter settings'
     },
-    'option1': {
-        'en': 'option1',
-        'de': 'Option 1',
-        'ru': 'Опция 1',
-        'pt': 'Opção 1',
-        'nl': 'Optie 1',
-        'fr': 'Option 1',
-        'it': 'opzione 1',
-        'es': 'Opción 1',
-        'pl': 'opcja 1',
-        'zh-cn': '选项1'
+    'BalluBoiler adapter settings desc': {
+        'en':    'Specify the IP address and port for controlling water heater Ballu',
+        'de':    'Specify the IP address and port for controlling water heater Ballu',
+        'ru':    'Укажите IP адрес и порт для управления водонагревателем Ballu',
+        'pt':    'Specify the IP address and port for controlling water heater Ballu',
+        'nl':    'Specify the IP address and port for controlling water heater Ballu',
+        'fr':    'Specify the IP address and port for controlling water heater Ballu',
+        'it':    'Specify the IP address and port for controlling water heater Ballu',
+        'es':    'Specify the IP address and port for controlling water heater Ballu',
+        'pl':    'Specify the IP address and port for controlling water heater Ballu',
+        'zh-cn': 'Specify the IP address and port for controlling water heater Ballu'
     },
-    'option2': {
-        'en': 'option2',
-        'de': 'Option 2',
-        'ru': 'option2',
-        'pt': 'opção 2',
-        'nl': 'Optie 2',
-        'fr': 'Option 2',
-        'it': 'opzione 2',
-        'es': 'opcion 2',
-        'pl': 'Opcja 2',
-        'zh-cn': '选项2'
+    'host':                        {
+        'en':    'IP Address',
+        'de':    'IP Ad',
+        'ru':    'IP адрес',
+        'pt':    'IP Address',
+        'nl':    'IP Address',
+        'fr':    'IP Address',
+        'it':    'IP Address',
+        'es':    'IP Address',
+        'pl':    'IP Address',
+        'zh-cn': 'IP Address'
+    },
+    'port':                        {
+        'en':    'Port',
+        'de':    'Port',
+        'ru':    'Порт',
+        'pt':    'Port',
+        'nl':    'Port',
+        'fr':    'Port',
+        'it':    'Port',
+        'es':    'Port',
+        'pl':    'Port',
+        'zh-cn': 'Port'
     }
 };

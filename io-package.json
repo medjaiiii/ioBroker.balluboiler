@@ -72,11 +72,11 @@
    "objects": [],
 	"instanceObjects": [
   {
-      "_id": "info.connection",
+	  "_id": "info.connection",
       "type": "state",
       "common": {
         "role": "indicator.connected",
-        "name": "if connected to Ballu",
+        "name": "if connected to boiler",
         "type": "boolean",
         "read": true,
         "write": false,
@@ -84,8 +84,8 @@
       },
       "native": {}
     },
-   {
-      "_id": "temp",
+    {
+      "_id": "temp_cur",
       "type": "state",
       "common": {
         "role": "value.temperature",
@@ -100,7 +100,7 @@
       "native": {}
     },
     {
-      "_id": "settemp",
+      "_id": "temp",
       "type": "state",
       "common": {
         "role": "level.temperature",
@@ -108,15 +108,15 @@
         "desc": "set temperature",
         "type": "number",
         "unit": "°C",
-        "min": 35,
-        "max": 75,
+        "min": 0,
+        "max": 60,
         "read": true,
         "write": true,
         "def": 18
       },
       "native": {}
     },
-	{
+    {
       "_id": "mode",
       "type": "state",
       "common": {
@@ -128,14 +128,14 @@
         "write": true,
         "def": "Off",
         "states": {
-          "low": "Low",
-          "high": "High",
-          "off": "Off"
+          "off": "Off",
+          "one": "One heating element",
+          "two": "Two heating elements"
         }
       },
       "native": {}
     },
-  {
+    {
       "_id": "raw",
       "type": "state",
       "common": {

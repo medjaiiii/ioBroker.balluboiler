@@ -9,7 +9,8 @@
   "homepage": "https://github.com/medjaiiii/ioBroker.balluboiler",
   "license": "MIT",
   "keywords": [
-    "Ballu boiler"
+    "Ballu boiler",
+	"Ballu water heater",
   ],
   "repository": {
     "type": "git",
