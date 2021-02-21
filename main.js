@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 const utils = require('@iobroker/adapter-core');
 let net = require('net');
 let adapter, query, recnt, balluboiler, in_msg, out_msg, states = {}, old_states = {}, tabu = false, _connect = false;
