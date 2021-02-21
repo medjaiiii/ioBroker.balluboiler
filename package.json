@@ -1,6 +1,6 @@
 {
   "name": "iobroker.balluboiler",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Ballu boiler",
   "author": {
     "name": "medjai",
@@ -10,7 +10,7 @@
   "license": "MIT",
   "keywords": [
     "Ballu boiler",
-	"Ballu water heater",
+	"Ballu water heater"
   ],
   "repository": {
     "type": "git",
