@@ -1,9 +1,9 @@
 {
     "common": {
         "name": "balluboiler",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "news": {
-            "0.0.1": {
+            "0.0.2": {
                 "en": "initial release",
                 "de": "Erstveröffentlichung",
                 "ru": "Начальная версия",
@@ -129,8 +129,8 @@
         "def": "Off",
         "states": {
           "off": "Off",
-          "one": "One heating element",
-          "two": "Two heating elements"
+          "one": "One_heating_element",
+          "two": "Two_heating_elements"
         }
       },
       "native": {}
