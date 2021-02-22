@@ -2,7 +2,7 @@
 const utils = require('@iobroker/adapter-core');
 let net = require('net');
 let adapter, query, recnt, balluboiler, in_msg, out_msg, states = {}, old_states = {}, tabu = false, _connect = false;
-const polling_time = 3000;
+const polling_time = 10000;
 // [170, 4, 10, 0, 1, 35, 220] // включение 1 режим 35 градусов
 // [170, 4, 10, 0, 2, 61, 247] // включение 2 режим 61 градусов
 const command = {
@@ -44,28 +44,30 @@ function startAdapter(options) {
 }
 
 function sendCmd(cmd, val) {
-  out_msg = Buffer.concat([Buffer.from([170, 4, 10, 0]), Buffer.from([in_msg[3]]), Buffer.from([in_msg[5]])]);
-  tabu = true;
-  switch (cmd) {
-    case 'mode': //0 - выклл, 1 - вкл один тэн, 2 - вкл два тэна
-      if (val === 'off' || val === 0) {
-        val = 0;
-      } else if (val === 'one' || val === 1) {
-        val = 1;
-      } else if (val === 'two' || val === 2) {
-        val = 2;
-      }
-      out_msg[4] = val;
-      send(out_msg);
-      break;
-    case 'temp': // температура
-      out_msg[5] = val;
-      send(out_msg);
-      break;
-    case 'raw':
-      send(toArr(val, 2));
-      break;
-    default:
+  if (['mode', 'temp', 'raw'].includes(cmd)) {
+    out_msg = Buffer.concat([Buffer.from([170, 4, 10, 0]), Buffer.from([in_msg[3]]), Buffer.from([in_msg[5]])]);
+    tabu = true;
+    switch (cmd) {
+      case 'mode': //0 - выклл, 1 - вкл один тэн, 2 - вкл два тэна
+        if (val === 'off' || val === 0) {
+          val = 0;
+        } else if (val === 'one' || val === 1) {
+          val = 1;
+        } else if (val === 'two' || val === 2) {
+          val = 2;
+        }
+        out_msg[4] = val;
+        send(out_msg);
+        break;
+      case 'temp': // температура
+        out_msg[5] = val;
+        send(out_msg);
+        break;
+      case 'raw':
+        send(toArr(val, 2));
+        break;
+      default:
+    }
   }
 }
 
@@ -93,7 +95,7 @@ function connect(cb) {
       adapter.log.debug("balluboiler incomming: " + in_msg.toString('hex'));
       parse(in_msg);
     } else {
-      adapter.log.error("Error length packet. Raw response: {" + chunk.toString('hex') + '} Length packet:[' + chunk.length + ']');
+      adapter.log.debug("Error length packet. Raw response: {" + chunk.toString('hex') + '} Length packet:[' + chunk.length + ']');
     }
   });
   balluboiler.on('error', function (e) {
