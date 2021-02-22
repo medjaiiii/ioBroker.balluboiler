@@ -17,7 +17,7 @@ const byte = {
 function startAdapter(options) {
   return adapter = utils.adapter(Object.assign({}, options, {
     systemConfig: true,
-    name: 'boiler',
+    name: 'balluboiler',
     ready: main,
     unload: (callback) => {
       try {
