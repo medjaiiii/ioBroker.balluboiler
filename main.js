@@ -45,7 +45,7 @@ function startAdapter(options) {
 
 function sendCmd(cmd, val) {
   if (['mode', 'temp', 'raw'].includes(cmd)) {
-    out_msg = Buffer.concat([Buffer.from([170, 4, 10, 0]), Buffer.from([in_msg[3]]), Buffer.from([in_msg[5]])]);
+    out_msg = Buffer.from([170, 4, 10, 0, states.mode, states.temp]);
     tabu = true;
     switch (cmd) {
       case 'mode': //0 - выклл, 1 - вкл один тэн, 2 - вкл два тэна
@@ -90,12 +90,14 @@ function connect(cb) {
   });
   balluboiler.on('data', function (chunk) {
     adapter.log.debug("balluboiler raw response: {" + chunk.toString('hex') + '} Length packet:[' + chunk.length + ']');
-    if (chunk.length === 12) {
+    if (chunk.length === 1 && chunk[0] === 170) {
       in_msg = Buffer.from(chunk);
+    } else {
+      in_msg = Buffer.concat([in_msg, chunk]);
+    }
+    if (in_msg.length === 12) {
       adapter.log.debug("balluboiler incomming: " + in_msg.toString('hex'));
       parse(in_msg);
-    } else {
-      adapter.log.debug("Error length packet. Raw response: {" + chunk.toString('hex') + '} Length packet:[' + chunk.length + ']');
     }
   });
   balluboiler.on('error', function (e) {
