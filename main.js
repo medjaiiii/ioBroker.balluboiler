@@ -1,7 +1,7 @@
 'use strict';
 const utils = require('@iobroker/adapter-core');
 let net = require('net');
-let adapter, query, recnt, boiler, in_msg, out_msg, states = {}, old_states = {}, tabu = false, _connect = false;
+let adapter, query, recnt, balluboiler, in_msg, out_msg, states = {}, old_states = {}, tabu = false, _connect = false;
 const polling_time = 3000;
 // [170, 4, 10, 0, 1, 35, 220] // включение 1 режим 35 градусов
 // [170, 4, 10, 0, 2, 61, 247] // включение 2 режим 61 градусов
@@ -24,7 +24,7 @@ function startAdapter(options) {
         adapter.log.debug('cleaned everything up...');
         query && clearInterval(query);
         recnt && clearTimeout(recnt);
-        boiler && boiler.destroy();
+        balluboiler && balluboiler.destroy();
         callback();
       } catch (e) {
         callback();
@@ -72,11 +72,11 @@ function sendCmd(cmd, val) {
 function connect(cb) {
   let host = adapter.config.host ? adapter.config.host : '127.0.0.1';
   let port = adapter.config.port ? adapter.config.port : 23;
-  adapter.log.debug('boiler ' + 'connect to: ' + host + ':' + port);
-  boiler = net.connect(port, host, function () {
+  adapter.log.debug('balluboiler ' + 'connect to: ' + host + ':' + port);
+  balluboiler = net.connect(port, host, function () {
     clearTimeout(recnt);
     adapter.setState('info.connection', true, true);
-    adapter.log.info('boiler connected to: ' + host + ':' + port);
+    adapter.log.info('balluboiler connected to: ' + host + ':' + port);
     _connect = true;
     clearInterval(query);
     query = setInterval(function () {
@@ -86,22 +86,22 @@ function connect(cb) {
     }, polling_time);
     cb && cb();
   });
-  boiler.on('data', function (chunk) {
-    adapter.log.debug("boiler raw response: {" + chunk.toString('hex') + '} Length packet:[' + chunk.length + ']');
+  balluboiler.on('data', function (chunk) {
+    adapter.log.debug("balluboiler raw response: {" + chunk.toString('hex') + '} Length packet:[' + chunk.length + ']');
     if (chunk.length === 12) {
       in_msg = Buffer.from(chunk);
-      adapter.log.debug("boiler incomming: " + in_msg.toString('hex'));
+      adapter.log.debug("balluboiler incomming: " + in_msg.toString('hex'));
       parse(in_msg);
     } else {
       adapter.log.error("Error length packet. Raw response: {" + chunk.toString('hex') + '} Length packet:[' + chunk.length + ']');
     }
   });
-  boiler.on('error', function (e) {
+  balluboiler.on('error', function (e) {
     err(e);
   });
-  boiler.on('close', function (e) {
+  balluboiler.on('close', function (e) {
     if (_connect) {
-      err('boiler disconnected');
+      err('balluboiler disconnected');
     }
     reconnect();
   });
@@ -112,7 +112,7 @@ function send(cmd) {
   if (cmd !== undefined) {
     cmd = packet(cmd);
     adapter.log.debug('Send Command: ' + cmd.toString("hex"));
-    boiler.write(cmd);
+    balluboiler.write(cmd);
     tabu = false;
   }
 }
@@ -160,7 +160,7 @@ function reconnect() {
   adapter.setState('info.connection', false, true);
   query && clearInterval(query);
   recnt && clearTimeout(recnt);
-  boiler.destroy();
+  balluboiler.destroy();
   old_states = {};
   _connect = false;
   adapter.log.info('Reconnect after 60 sec...');
@@ -170,9 +170,9 @@ function reconnect() {
 }
 
 function err(e) {
-  adapter.log.error("boiler " + e);
+  adapter.log.error("balluboiler " + e);
   if (e.code === "ENOTFOUND" || e.code === "ECONNREFUSED" || e.code === "ETIMEDOUT") {
-    boiler.destroy();
+    balluboiler.destroy();
   }
 }
 
