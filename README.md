@@ -1,6 +1,7 @@
 ![Logo](admin/balluboiler.png)
 # ioBroker.balluboiler
-
+<img src="https://github.com/medjaiiii/ioBroker.balluboiler/blob/main/img/boiler.png" width=450 align="left" />
+<img src="https://github.com/medjaiiii/ioBroker.balluboiler/blob/main/img/wifi.png" width=450 align="left" />
 [![NPM version](http://img.shields.io/npm/v/iobroker.balluboiler.svg)](https://www.npmjs.com/package/iobroker.balluboiler)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.balluboiler.svg)](https://www.npmjs.com/package/iobroker.balluboiler)
 ![Number of Installations (latest)](http://iobroker.live/badges/balluboiler-installed.svg)
@@ -20,15 +21,13 @@ Ballu boiler
 Устанавливаем адаптер и в настройках прописываем IP адрес устройства.
 
 
-
 Adapter for Ballu SMART series water heaters models BWH/S Smart WIFI[for example this](https://www.ballu.ru/catalog/tekhnika_dlya_doma_i_ofisa/vodonagrevateli/elektricheskie_nakopitelnye_s_bakom_iz_nerzhaveyushchey_stali/smart/vodonagrevatel_ballu_bwh_s_50_smart_wifi/)
 To work with the adapter, you need a self-made ESP controller (Wemos(it has a 5V pin on board or another).
 On the ESP you need to fill in the [sketch](https://github.com/medjaiiii/ioBroker.balluboiler/blob/main/ESP/wifi_serial/wifi_serial.ino) via Arduino after editing and specifying the wifi parameters.
 The USB connector is soldered to the adapter(on the TX white wire, on the RX green wire).
 Install the adapter and specify the IP address of the device in the settings.
 
-<img src="https://github.com/medjaiiii/ioBroker.balluboiler/blob/main/img/boiler.png" width=450 align="left" />
-<img src="https://github.com/medjaiiii/ioBroker.balluboiler/blob/main/img/wifi.png" width=450 align="left" />
+
 
 ### Publishing the adapter
 Since you have chosen GitHub Actions as your CI service, you can 
