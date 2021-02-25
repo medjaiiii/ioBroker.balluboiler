@@ -18,6 +18,9 @@ Ballu boiler
 На ESP необходимо залить [скетч](https://github.com/medjaiiii/ioBroker.balluboiler/blob/main/ESP/wifi_serial/wifi_serial.ino) через ардуино предварительно отредактировав и указав параметры wifi.
 К адаптеру припаивается USB разъем(на TX белый провод, на RX зеленый провод). 
 Устанавливаем адаптер и в настройках прописываем IP адрес устройства.
+<img src="https://github.com/medjaiiii/ioBroker.balluboiler/blob/main/img/boiler.png" width=150 align="right" />
+<img src="https://github.com/medjaiiii/ioBroker.balluboiler/blob/main/img/wifi.png" width=150 align="right" />
+
 
 Adapter for Ballu SMART series water heaters models BWH/S Smart WIFI[for example this](https://www.ballu.ru/catalog/tekhnika_dlya_doma_i_ofisa/vodonagrevateli/elektricheskie_nakopitelnye_s_bakom_iz_nerzhaveyushchey_stali/smart/vodonagrevatel_ballu_bwh_s_50_smart_wifi/)
 To work with the adapter, you need a self-made ESP controller (Wemos(it has a 5V pin on board or another).
