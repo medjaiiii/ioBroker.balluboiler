@@ -128,9 +128,9 @@
         "write": true,	
         "def": "Off",
         "states": {
-          "off": "0",
-          "one": "1",
-          "two": "2"
+          "off": "off",
+          "one": "one",
+          "two": "two"
         }
       },
       "native": {}
