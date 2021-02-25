@@ -125,12 +125,12 @@
         "desc": "mode",
         "type": "string",
         "read": true,
-        "write": true,
+        "write": true,	
         "def": "Off",
         "states": {
-          "off": 0,
-          "one": 1,
-          "two": 2
+          "off": "0",
+          "one": "1",
+          "two": "2"
         }
       },
       "native": {}
