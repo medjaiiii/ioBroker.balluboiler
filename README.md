@@ -13,6 +13,9 @@
 ## balluboiler adapter for ioBroker
 
 Ballu boiler
+Адаптер для водонагревателей Ballu серии SMART моделей BWH/S Samrt WIFI.
+Для работы с адаптером необходим самодельный ESP контролер(Wemos или другой).
+
 
 ## Developer manual
 This section is intended for the developer. It can be deleted later
