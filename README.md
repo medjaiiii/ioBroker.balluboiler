@@ -1,7 +1,6 @@
 ![Logo](admin/balluboiler.png)
 # ioBroker.balluboiler
-<img src="https://github.com/medjaiiii/ioBroker.balluboiler/blob/main/img/boiler.png" width=450 align="left" />
-<img src="https://github.com/medjaiiii/ioBroker.balluboiler/blob/main/img/wifi.png" width=450 align="left" />
+
 [![NPM version](http://img.shields.io/npm/v/iobroker.balluboiler.svg)](https://www.npmjs.com/package/iobroker.balluboiler)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.balluboiler.svg)](https://www.npmjs.com/package/iobroker.balluboiler)
 ![Number of Installations (latest)](http://iobroker.live/badges/balluboiler-installed.svg)
@@ -28,6 +27,8 @@ The USB connector is soldered to the adapter(on the TX white wire, on the RX gre
 Install the adapter and specify the IP address of the device in the settings.
 
 
+![image](admin/boiler.png)
+![image](admin/wifi.png)
 
 ### Publishing the adapter
 Since you have chosen GitHub Actions as your CI service, you can 
