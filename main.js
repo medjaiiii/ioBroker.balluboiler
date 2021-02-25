@@ -13,6 +13,7 @@ const byte = {
   temp_cur: 4,
   temp: 5,
 };
+const modes = ['off', 'one', 'two']; // Режимы (выкл, один тэн, два тэна)
 
 function startAdapter(options) {
   return adapter = utils.adapter(Object.assign({}, options, {
@@ -45,7 +46,7 @@ function startAdapter(options) {
 
 function sendCmd(cmd, val) {
   if (['mode', 'temp', 'raw'].includes(cmd)) {
-    out_msg = Buffer.from([170, 4, 10, 0, states.mode, states.temp]);
+    out_msg = Buffer.from([170, 4, 10, 0, modes.indexOf(states.mode), states.temp]);
     tabu = true;
     switch (cmd) {
       case 'mode': //0 - выклл, 1 - вкл один тэн, 2 - вкл два тэна
@@ -122,7 +123,7 @@ function send(cmd) {
 }
 
 function parse(msg) {
-  states.mode = ['off', 'one', 'two'][msg[byte.mode]]; // Режим (выкл, один тэн, два тэна)
+  states.mode = modes[msg[byte.mode]]; // Режим
   states.temp_cur = msg[byte.temp_cur]; // Текущая температура
   states.temp = msg[byte.temp]; // Установленная температура
 
