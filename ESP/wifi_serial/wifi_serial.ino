@@ -6,8 +6,8 @@
 #define LED     12
 
 
-const char* ssid = "*******";
-const char* password = "********";
+const char* ssid = "medjai_iot";
+const char* password = "goldstar";
 
 WiFiServer server(23);
 WiFiClient serverClients[MAX_SRV_CLIENTS];
@@ -26,7 +26,7 @@ void setup() {
   
   server.begin();
   server.setNoDelay(true);
-  ArduinoOTA.setHostname("esp_telnet");
+  ArduinoOTA.setHostname("balluboiler");
   ArduinoOTA.onStart([]() {  });
   ArduinoOTA.onEnd([]() {  });
   ArduinoOTA.onProgress([](unsigned int progress, unsigned int total) {  });

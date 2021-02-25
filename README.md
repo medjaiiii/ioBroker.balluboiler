@@ -13,9 +13,17 @@
 ## balluboiler adapter for ioBroker
 
 Ballu boiler
-Адаптер для водонагревателей Ballu серии SMART моделей BWH/S Samrt WIFI.
-Для работы с адаптером необходим самодельный ESP контролер(Wemos или другой).
+Адаптер для водонагревателей Ballu серии SMART моделей BWH/S Smart WIFI.
+Для работы с адаптером необходим самодельный ESP контролер(Wemos(у него есть 5в пин на борту или другой).
+На ESP необходимо залить скетч через ардуино предварительно отредактировав и указав параметры wifi https://github.com/medjaiiii/ioBroker.balluboiler/blob/main/ESP/wifi_serial/wifi_serial.ino
+К адаптеру припаивается USB разъем(на TX белый провод, на RX зеленый провод). 
+Устанавливаем адаптер и в настройках прописываем IP адрес устройства.
 
+Adapter for Ballu SMART series water heaters models BWH/S Smart WIFI.
+To work with the adapter, you need a self-made ESP controller (Wemos(it has a 5V pin on board or another).
+On the ESP you need to fill in the sketch via Arduino after editing and specifying the wifi parameters https://github.com/medjaiiii/ioBroker.balluboiler/blob/main/ESP/wifi_serial/wifi_serial.ino
+The USB connector is soldered to the adapter(on the TX white wire, on the RX green wire).
+Install the adapter and specify the IP address of the device in the settings.
 
 ## Developer manual
 This section is intended for the developer. It can be deleted later
