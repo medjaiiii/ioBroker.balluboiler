@@ -108,11 +108,11 @@
         "desc": "set temperature",
         "type": "number",
         "unit": "°C",
-        "min": 0,
-        "max": 60,
+        "min": 35,
+        "max": 75,
         "read": true,
         "write": true,
-        "def": 18
+        "def": 35
       },
       "native": {}
     },
@@ -128,9 +128,9 @@
         "write": true,
         "def": "Off",
         "states": {
-          "off": "Off",
-          "one": "One_heating_element",
-          "two": "Two_heating_elements"
+          "off": 0,
+          "one": 1,
+          "two": 2
         }
       },
       "native": {}
