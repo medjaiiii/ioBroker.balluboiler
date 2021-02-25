@@ -128,9 +128,9 @@
         "write": true,	
         "def": "Off",
         "states": {
-          "off": "Off",
-          "one": "One heating element",
-          "two": "Two heating elements"
+          "off": "0_off",
+          "one": "1_one",
+          "two": "2_two"
         }
       },
       "native": {}
