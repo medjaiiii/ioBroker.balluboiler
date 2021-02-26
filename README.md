@@ -10,22 +10,24 @@
 
 [![NPM](https://nodei.co/npm/iobroker.balluboiler.png?downloads=true)](https://nodei.co/npm/iobroker.balluboiler/)
 
-## balluboiler adapter for ioBroker
+## BalluBoiler adapter for ioBroker
 
 Ballu boiler
-Адаптер для водонагревателей Ballu серии SMART моделей BWH/S Smart WIFI,[например этот](https://www.ballu.ru/catalog/tekhnika_dlya_doma_i_ofisa/vodonagrevateli/elektricheskie_nakopitelnye_s_bakom_iz_nerzhaveyushchey_stali/smart/vodonagrevatel_ballu_bwh_s_50_smart_wifi/)
+Адаптер для водонагревателей Ballu серии SMART моделей BWH/S Smart WIFI, [например этот](https://www.ballu.ru/catalog/tekhnika_dlya_doma_i_ofisa/vodonagrevateli/elektricheskie_nakopitelnye_s_bakom_iz_nerzhaveyushchey_stali/smart/vodonagrevatel_ballu_bwh_s_50_smart_wifi/)
 Для работы с адаптером необходим самодельный ESP контролер(Wemos(у него есть 5в пин на борту или другой).
 На ESP необходимо залить [скетч](https://github.com/medjaiiii/ioBroker.balluboiler/blob/main/ESP/wifi_serial/wifi_serial.ino) через ардуино предварительно отредактировав и указав параметры wifi.
 К адаптеру припаивается USB разъем(на TX белый провод, на RX зеленый провод). 
 Устанавливаем адаптер и в настройках прописываем IP адрес устройства.
+#Огромная благодарность [instalator](https://blog.instalator.ru/) . На основе его [проекта управления кондиционером Haier](https://blog.instalator.ru/archives/433) был создан этот адаптер.
+#Без него бы ничего не получилось. 
 
-
-Adapter for Ballu SMART series water heaters models BWH/S Smart WIFI[for example this](https://www.ballu.ru/catalog/tekhnika_dlya_doma_i_ofisa/vodonagrevateli/elektricheskie_nakopitelnye_s_bakom_iz_nerzhaveyushchey_stali/smart/vodonagrevatel_ballu_bwh_s_50_smart_wifi/)
+Adapter for Ballu SMART series water heaters models BWH/S Smart WIFI [for example this](https://www.ballu.ru/catalog/tekhnika_dlya_doma_i_ofisa/vodonagrevateli/elektricheskie_nakopitelnye_s_bakom_iz_nerzhaveyushchey_stali/smart/vodonagrevatel_ballu_bwh_s_50_smart_wifi/)
 To work with the adapter, you need a self-made ESP controller (Wemos(it has a 5V pin on board or another).
 On the ESP you need to fill in the [sketch](https://github.com/medjaiiii/ioBroker.balluboiler/blob/main/ESP/wifi_serial/wifi_serial.ino) via Arduino after editing and specifying the wifi parameters.
 The USB connector is soldered to the adapter(on the TX white wire, on the RX green wire).
 Install the adapter and specify the IP address of the device in the settings.
-
+#Huge thanks to [installer](https://blog.instalator.ru/) . On the basis of our project management with air conditioning Haier](https://blog.instalator.ru/archives/433) was created by the adapter.
+#It wouldn't have worked without him.
 
 ![image](admin/boiler.png)
 ![image](admin/wifi.png)
