@@ -91,14 +91,17 @@ function connect(cb) {
   });
   balluboiler.on('data', function (chunk) {
     adapter.log.debug("balluboiler raw response: {" + chunk.toString('hex') + '} Length packet:[' + chunk.length + ']');
-    if (chunk.length === 1 && chunk[0] === 170) {
+    if (!in_msg || chunk[0] === 170) {
       in_msg = Buffer.from(chunk);
     } else {
       in_msg = Buffer.concat([in_msg, chunk]);
     }
-    if (in_msg.length === 12) {
-      adapter.log.debug("balluboiler incomming: " + in_msg.toString('hex'));
-      parse(in_msg);
+
+    while (in_msg && in_msg.length >= 12) {
+      const msg = in_msg.slice(0, 12);
+      adapter.log.debug('balluboiler incomming: ' + msg.toString('hex'));
+      parse(msg);
+      in_msg = in_msg.length > 12 ? in_msg.slice(12) : null;
     }
   });
   balluboiler.on('error', function (e) {
